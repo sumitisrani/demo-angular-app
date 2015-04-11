@@ -1,0 +1,12 @@
+.datepicker-span {
+  color: #ccc;
+  position: absolute !important;
+  right: 23px;
+  top: 9px !important;
+}
+.datepicker-div {
+  position:relative;
+}
+.task-form {
+  margin-left: -46px;
+}

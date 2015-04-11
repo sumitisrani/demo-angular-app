@@ -1,0 +1,26 @@
+<div ng-app="myapp" ng-controller="userCtrl">
+  <div class="outer-div">
+    <h2>Update Your Account</h2>
+    <form role="form">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" ng-model="name" type="text" placeholder="Name" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" ng-model="email" type="email" placeholder="Email" />
+      </div>
+      <div class="form-group">
+        <label> Current Password</label>
+        <input class="form-control" ng-model="curpassword" type="password" placeholder="Current Password" />
+      </div>
+      <div class="form-group">
+        <div class="row">
+            <div  class="col-md-12 col-xs-12 col-sm-12">
+              <button type="submit" ng-click="update_user()" class="btn btn-success col-md-12 col-xs-12 col-sm-12">Update</button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>

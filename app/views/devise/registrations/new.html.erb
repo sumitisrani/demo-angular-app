@@ -1,0 +1,32 @@
+<div ng-app="myapp" ng-controller="userCtrl">
+  <div class="outer-div">
+    <h2>Create New Account</h2>
+    <form role="form">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" ng-model="name" type="text" placeholder="First Name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" ng-model="email" type="email" placeholder="Email" />
+        </div>
+       
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" ng-model="password" type="password" placeholder="Enter a Password" />
+        </div>
+        <div class="form-group">
+          <label> Confirm a Password</label>
+          <input class="form-control" ng-model="cpassword" type="password" placeholder="Choose a Password" />
+        </div>
+        <div class="form-group">
+          <div class="row">
+              <div  class="col-md-12 col-xs-12 col-sm-12">
+                <button type="submit" ng-click="sign_up()" class="btn btn-success col-md-12 col-xs-12 col-sm-12">Sign Up</button>
+              </div>
+          </div>
+        </div>
+    </form>
+  </div>  
+</div>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <title>Todo List</title>
+    <%= stylesheet_link_tag    'application', media: "all" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top header" role="navigation" ng-controller="signOutCtrl">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand" message leave><appname></appname></a>
+          
+        </div>
+            
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <div class="btn-group">
+              <% if current_user %>
+                <li class="user dropdown-toggle" data-toggle="dropdown" aria-expanded="false"">
+                  Hi <%= current_user.name %><span class="caret"></span>
+                </li>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href='/tasks'>Manage Your Task</a></li>
+                  <li><a href='' ng-click='users();'>Users</a></li>
+                  <li><a href='' ng-click='signout()'>Logout</a></li>
+                </ul>  
+              <% else %>
+                <li class="user">
+                  <a href="/users/sign_in">Sign in</a>
+                  <a href="/users/sign_up">Sign Up</a>
+                </li>
+              <% end %>  
+            </div>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+    <div class="container main-container">
+      <div class="row">
+        <%= yield %>
+      </div>  
+    </div>
+  </body>
+</html>

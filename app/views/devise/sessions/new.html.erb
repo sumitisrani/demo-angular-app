@@ -1,0 +1,30 @@
+<div ng-app="myapp" ng-controller="userCtrl">
+  <div class="outer-div">
+    <form role="form">
+      <h2>Log in and Add a Task</h2>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" ng-model="email" type="text" placeholder="Email" />
+      </div>
+      <div class="form-group">
+        <label>password</label>
+        <input class="form-control" ng-model="password" type="password" placeholder="Password" />
+      </div>
+        <div class="form-group">
+          <div class="row">
+            <div  class="col-md-3 col-xs-4">
+              <button type="submit" ng-click="sign_in()" class="btn btn-success">Sign in</button>
+            </div>
+            <!--<div  class="col-md-6 col-xs-8">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Remember me
+                </label>
+              </div>
+            </div>-->
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+

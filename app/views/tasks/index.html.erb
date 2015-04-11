@@ -1,0 +1,83 @@
+<div ng-controller="userCtrl">
+  <div class="outer-div col-md-12">
+    <div id="flash-messages"></div>
+    <div class="list-group col-md-6 panel">
+      <form name="form" class="navbar-form navbar-left" role="search" novalidate>
+        
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Add a task" ng-model="task.description" name="Tdesc" required/>
+          <small class="error" ng-show="form.Tdesc.$error.required && form.Tdesc.$dirty || form.submitted">Your task is required.</small>
+        </div><br> 
+         
+        <div class="input-append date datepicker-div" id="datetimepicker" dateepicker ng-model="task.task_date"  data-date-format="dd-mm-yyyy">
+          <input class="span2 form-control" size="20" type="text" placeholder="Select Date" required/>
+          <span class="add-on glyphicon glyphicon-calendar datepicker-span"></span>
+          <small class="error" ng-show="form.Tdesc.$error.required && form.Tdesc.$dirty || form.submitted">Your date is required.</small>
+        </div>
+        
+        <input type="hidden" value="task.id" /><br>
+        <input type="submit" class="btn btn-default" ng-click="addEditTask(task)" value="Save"/>
+        <a class="btn btn-primary" href="" ng-click="reset(myform)">Reset</a>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 panel">
+      <h4>Todays to do list</h4>
+      <ol>
+        <li ng-repeat="reminder in reminder_tasks">{{reminder.description}}</li>
+      </ol>
+    </div> 
+  </div>
+  <table class="table table-striped">
+    <thead class="text-center"><b>Your Created Task</b>
+      <td></td>
+      <td>Task</td>
+      <td>Date</td>
+      <td>Actions</td>
+      <td>Status</td>
+      <td>Shared With</td>
+      <td>Share Your Task</td>
+    </thead>
+    <tr ng-repeat="task in tasks | filter:search" class="text-center" ng-click="$log.debug($event)">
+      <div class="pull-right"><b>Search  </b><input type="text" ng-model="search.description" placeholder="Search Task"></div>
+      <td>{{$index + 1}} {{ev.pageX}}</td>
+      <td>{{task.description}}</td>
+      <td>{{task.task_date | date:'longDate'}}</td>
+      <td>
+        <a href="" ng-click=editTask(task) class="btn btn-info">Edit</a>
+        <a href="" ng-click=deleteTask(task) class="btn btn-danger">Delete</a>
+      <td>  
+        <select ng-model="task.status" ng-change="addStatus(task)" ng-options="status as status for status in status_lists">
+          <option value="">Choose Status</option>
+        </select>
+      </td>  
+      <td><span ng-repeat="user in task.shared_users">
+        <input type="checkbox" ng-model="user" ng-change="removeSharedTask({{user}}, task)">{{user.name}}<br></span></td>
+      <td>
+        <select ng-model="user" ng-change="shareTask(user, task)" ng-options="user as user.name for user in users">
+          <option value="">Choose User</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <table class="table table-striped">
+    <thead class="text-center"><b>People Shared Tasks with You</b>
+      <td>Task</td>
+      <td>Date</td>
+      <td>Status</td>
+      <td>Task Created By</td>
+    </thead>
+    <tr ng-repeat="shared_task in shared_tasks" class="text-center">
+      <td>{{shared_task.description}}</td>
+      <td>{{shared_task.task_date | date:'longDate'}}</td>
+      <td><span class="label label-default">{{shared_task.status}}</span></td>
+      <td>{{shared_task.user_id | getUserName:users}}</td>
+    </tr>
+  </table> 
+  <panel>
+    <div class="btn">Click me!</div>
+  </panel> 
+</div>
+  
+
+
